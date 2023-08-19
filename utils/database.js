@@ -1,18 +1,19 @@
 const mongodb = require("mongodb");
 
+const { mongodb_uri } = require("../config");
+
 let _db;
 const mongoClient = mongodb.MongoClient;
 
 const mongoConnect = (cb) => {
   mongoClient
-    .connect(
-      "mongodb+srv://kamal2507s:Kamalsharma1$@cluster0.t4bgmfd.mongodb.net/?retryWrites=true&w=majority"
-    )
+    .connect(mongodb_uri)
     .then((client) => {
       _db = client.db("ChatApp");
       console.log("Connected to database!");
       cb();
-    }).catch(err => next(err));
+    })
+    .catch((err) => next(err));
 };
 
 const getDb = () => {
