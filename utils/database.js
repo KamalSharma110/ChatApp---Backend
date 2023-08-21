@@ -13,7 +13,7 @@ const mongoConnect = (cb) => {
       console.log("Connected to database!");
       cb();
     })
-    .catch((err) => next(err));
+    .catch((err) => console.log(err));
 };
 
 const getDb = () => {
